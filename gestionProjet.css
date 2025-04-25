@@ -1,0 +1,136 @@
+/* Style de base pour le corps de la page */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; /* Supprime les marges par défaut du body */
+  background-color: #f9f9f9;
+}
+
+/* Style de l'en-tête de la page */
+header {
+  background-color: #003366; 
+  color: white; 
+  padding: 1em 2em; /* Espacement interne pour l'en-tête */
+  display: flex; /* Utilisation de Flexbox pour aligner les éléments horizontalement */
+  justify-content: space-between; /* Espacement entre les éléments du header */
+  align-items: center; /* Aligne les éléments verticalement au centre */
+}
+
+/* Style des liens dans la navigation */
+nav a {
+  margin-left: 1.5em; /* Ajoute un espace à gauche entre les éléments de navigation */
+  color: white;
+  text-decoration: none; 
+}
+
+/* Style des liens de navigation lorsqu'ils sont survolés */
+nav a:hover {
+  color: #17a2b8; 
+}
+
+/* Style des liens actifs dans la navigation */
+nav a.active {
+  font-weight: bold; 
+  text-decoration: underline; 
+}
+
+/* Style des filtres */
+.filters {
+  margin: 1em 2em; /* Marge autour de la section des filtres */
+}
+
+/* Style des labels dans les filtres */
+.filters label {
+  font-weight: bold;
+}
+
+/* Style des éléments de sélection dans les filtres */
+.filters select {
+  margin-left: 0.5em; /* Ajoute un espace à gauche de la liste déroulante */
+  padding: 0.4em; /* Ajoute un peu d'espace à l'intérieur de la liste déroulante */
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+}
+
+/* Style du conteneur principal de la page */
+.container {
+  padding: 1em 2em; /* Espacement interne dans le conteneur */
+}
+
+/* Style des cartes de contenu */
+.card {
+  background-color: white;
+  border-radius: 8px; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Ombre subtile autour des cartes pour les faire ressortir */
+  margin-bottom: 1em; /* Marge en bas de chaque carte pour séparer les éléments */
+  padding: 1em; /* Espacement interne pour les cartes */
+}
+
+/* Effet au survol des cartes */
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Ombre plus marquée lors du survol pour l'effet interactif */
+  cursor: pointer;
+}
+
+/* Style des titres dans les en-têtes de projet */
+.project-header h3 {
+  margin: 0; /* Supprime la marge par défaut autour des titres */
+}
+
+/* Style des délais dans les projets */
+.delai {
+  margin-top: 0.5em; /* Marge en haut pour espacer le délai du contenu précédent */
+  font-size: 0.9em;
+}
+
+/* Style des tâches individuelles */
+.task {
+  padding: 0.5em; /* Espacement interne pour les tâches */
+  background-color: #f1f1f1; 
+  margin-top: 0.5em; /* Marge au-dessus pour séparer les tâches */
+  border-radius: 5px; 
+}
+
+/* Style des éléments de liste des employés et des compétences */
+#employes-1, #employes-2, #competences-1, #competences-2 {
+  background-color: white; 
+}
+
+/* Style des statuts des tâches ou projets */
+.status {
+  display: inline-block; /* Affichage en ligne pour que le texte soit sur la même ligne */
+  margin-left: 1em; /* Marge à gauche pour espacer le statut du contenu précédent */
+  padding: 0.2em 0.6em; /* Espacement interne pour rendre le statut plus lisible */
+  border-radius: 5px; 
+  font-size: 0.85em; 
+}
+
+/* Style spécifique pour chaque type de statut */
+.status.prevu { background-color: #d1ecf1; color: #0c5460; } /* Bleu clair pour les projets prévus */
+.status.a-faire { background-color: #fff3cd; color: #856404; } /* Jaune pour les tâches à faire */
+.status.urgent { background-color: #f8d7da; color: #721c24; } /* Rouge clair pour les tâches urgentes */
+.status.en-retard { background-color: #f5c6cb; color: #721c24; } /* Rouge plus clair pour les tâches en retard */
+.status.terminee { background-color: #d4edda; color: #155724; } /* Vert clair pour les tâches terminées */
+
+/* Style des boîtes de dialogue modales */
+dialog {
+  border: none; 
+  border-radius: 10px; 
+  padding: 1em; /* Espacement interne du contenu du dialog */
+  width: 300px; 
+  max-width: 80vw; /* Largeur maximale basée sur la taille de la fenêtre pour la responsivité */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Ombre portée pour donner un effet de profondeur */
+}
+
+/* Style de l'arrière-plan du dialog lorsqu'il est ouvert */
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent derrière le dialog */
+}
+
+/* Style du bouton pour fermer la boîte de dialogue */
+.close-dialog {
+  float: right; /* Positionne le bouton de fermeture en haut à droite */
+  background: none; 
+  border: none;
+  font-size: 1.2em; 
+  cursor: pointer; 
+}

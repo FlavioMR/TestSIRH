@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil - SIRH</title>
+  <link href="sirhClara.css" rel="stylesheet">
+  <script>
+    if (localStorage.getItem("auth") !== "true") {
+      // Si pas authentifié, retour au login
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <a href="#" onclick="logout()">Déconnexion</a>
+  <header>
+    <h1>SIRH</h1>
+    <nav>
+      <a href="accueil.html" class="active">Accueil</a>
+      <a href="gestionEmploye.html">Gestion employés</a>
+      <a href="gestionProjet.html">Gestion projets</a>
+      <a href="gestionCompetence.html">Gestion compétences</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h2>Bienvenue dans le Système d'Information RH</h2>
+      <p>Choisissez une section via la barre de navigation ci-dessus pour commencer à gérer vos données RH.</p>
+    </section>
+  
+    <section class="dashboard">
+      <div class="kpi-container">
+        <div class="kpi-card" id="total-employes"></div>
+        <div class="kpi-card" id="repartition-statut"></div>
+        <div class="kpi-card" id="salaire-moyen"></div>
+        <div class="kpi-card" id="anciennete-moyenne"></div>
+      </div>
+      <div class="chart-container">
+        <div id="chart-departements"></div>
+      </div>
+    </section>  
+  </main>
+  <script>
+    function logout() {
+      localStorage.removeItem("auth");
+      window.location.href = "login.html";
+    }
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="employes_data.js"></script>
+    <script src="dashboard.js"></script>   
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil - SIRH</title>
+  <link href="sirh.css" rel="stylesheet">
+</head>
+<body>
+  <a href="#" onclick="logout()">Déconnexion</a>
+  <header>
+    <h1>SIRH</h1>
+    <nav>
+      <a href="accueil.html" class="active">Accueil</a>
+      <a href="gestionEmploye.html">Gestion employés</a>
+      <a href="gestionProjet.html">Gestion projets</a>
+      <a href="gestionCompetence.html">Gestion compétences</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Bienvenue dans le Système d'Information RH</h2>
+      <p>Choisissez une section via la barre de navigation ci-dessus pour commencer à gérer vos données RH.</p>
+    </section>
+  </main>
+  <script>
+    function logout() {
+      localStorage.removeItem("auth");
+      window.location.href = "login.html";
+    }
+  </script>    
+</body>
+</html> -->

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profil Employé</title>
+  <link href="sirh.css" rel="stylesheet">
+  <script>
+    if (localStorage.getItem("auth") !== "true") {
+      // Si pas authentifié, retour au login
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <a href="#" onclick="logout()">Déconnexion</a>
+<header>
+  <h1>Profil de l'employé : Édith COLIN</h1>
+  <nav>
+    <a href="espaceEmploye.html" class="btn blue">Espace Employé</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="card left">
+    <h2>Informations personnelles</h2>
+    <p><strong>Nom :</strong> Édith COLIN</p>
+    <p><strong>Statut :</strong> CDI</p>
+    <p><strong>Date d'embauche :</strong> 13/08/2017</p>
+    <p><strong>Salaire brut :</strong> 3682.33 €</p>
+    <p><strong>Poste :</strong> Ingénieur R&amp;D</p>
+    <p><strong>Département :</strong> Recherche &amp; Développement</p>
+    <p><strong>Site :</strong> Lyon</p>
+
+    <h3>Compétences</h3>
+    <ul>
+      <li><strong>Conception graphique</strong> : Création de supports visuels et publicitaires</li>
+      <li><strong>Maintenance industrielle</strong> : Capacité à réparer et entretenir les machines de production.</li>
+      <li><strong>Data Science</strong> : Analyse et modélisation des données de production</li>
+      <li><strong>Logistique industrielle</strong> : Gestion de la supply chain et stockage</li>
+    </ul>
+
+    <h3>Compétences requises pour le poste</h3>
+    <ul>
+      <li>Maintenance industrielle</li>
+      <li>Data Science</li>
+    </ul>
+
+    <h3>Congés</h3>
+    <ul>
+      <li>Du 15/07/2024 au 30/07/2024 : Congé payé</li>
+    </ul>
+  </section>
+
+  <aside class="card right">
+    <h2>Entretiens</h2>
+    <p><strong>Annuel :</strong> Respect des consignes de sécurité et des normes en vigueur. (Entretien du 14/05/2024)</p>
+
+    <h2>Évaluations</h2>
+    <ul>
+      <li><strong>Maintenance industrielle</strong> : Note 4 (Entretien du 14/05/2024)</li>
+    </ul>
+
+    <h2>Projets</h2>
+    <ul>
+      <li><strong>Etude nouveaux matériaux</strong></li>
+    </ul>
+
+    <h2>Tâches</h2>
+    <ul>
+      <li><strong>Analyse des matériaux</strong> : 20h prévues à 80€/h, livraison le 01/09/2024, affecté le 20/04/2024 à 14:00</li>
+    </ul>
+  </aside>
+</main>
+
+<script>
+function logout() {
+  localStorage.removeItem("auth");
+  window.location.href = "login.html";
+}
+</script>
+</body>
+</html>
