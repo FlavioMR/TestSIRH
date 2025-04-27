@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestion des Compétences</title>
+  <link href="sirh.css" rel="stylesheet">
+  <script>
+    if (localStorage.getItem("auth") !== "true") {
+      // Si pas authentifié, retour au login
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+    <a href="#" onclick="logout()">Déconnexion</a>
+  <header>
+    <h1>SIRH</h1>
+    <nav>
+      <a href="accueil.html" class="active">Accueil</a>
+      <a href="gestionEmploye.html">Gestion employés</a>
+      <a href="gestionProjet.html">Gestion projets</a>
+      <a href="gestionCompetence.html">Gestion compétences</a>
+      <a href="edt.html"> Emploi du Temps</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card left">
+      <label for="select-employe"><strong>Sélectionnez un employé :</strong></label>
+      <select id="select-employe" onchange="changerEmploye(this.value)"></select>
+
+      <div id="competences-employe">
+        <h3>Compétences de l'employé</h3>
+        <ul id="liste-competences"></ul>
+      </div>
+    </section>
+
+    <aside class="card right">
+      <h3>Compétences requises</h3>
+      <p><strong>Poste :</strong></p>
+      <ul>
+        <li>Compétence A</li>
+        <li>Compétence B</li>
+      </ul>
+
+      <p><strong>Formation :</strong></p>
+      <ul>
+        <li>Compétence C</li>
+        <li>Compétence D</li>
+      </ul>
+
+      <p><strong>Projet / Tâche :</strong></p>
+      <ul>
+        <li>Compétence E</li>
+        <li>Compétence F</li>
+      </ul>
+    </aside>
+  </main>
+
+  <script src="choixEmploye.js"></script>
+  <script>
+    function logout() {
+      localStorage.removeItem("auth");
+      window.location.href = "login.html";
+    }
+  </script>    
+</body>
+</html>

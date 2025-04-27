@@ -1,0 +1,171 @@
+/* ---- Global ---- */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f2f2f2;
+}
+
+header {
+  background-color: #036;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: white;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ---- Layouts ---- */
+main.container,
+.container {
+  padding: 2rem;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+  flex: 1;
+  min-width: 300px;
+}
+
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+}
+
+/* ---- Boutons ---- */
+.btn {
+  margin: 10px 5px 20px 0;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn.blue {
+  background: #007bff;
+}
+
+.btn.green {
+  background: #28a745;
+}
+
+/* ---- Gestion Employés & Compétences ---- */
+#employe {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+#infos-employe p {
+  margin: 6px 0;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+/* ---- Gestion Projets ---- */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task {
+  margin-left: 1rem;
+  border-left: 3px solid #007bff;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.status {
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.status.terminee {
+  background-color: green;
+}
+
+.status.en-cours {
+  background-color: orange;
+}
+
+.status.en-attente {
+  background-color: gray;
+}
+
+.toggle-arrow {
+  margin-right: 10px;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.project-header.collapsed .toggle-arrow {
+  transform: rotate(-90deg);
+}
+
+/* ---- Style pour tableau de bord ---- */
+.kpi-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.kpi-card {
+  flex: 1;
+  min-width: 200px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.chart-container {
+  margin: 2rem 0;
+}

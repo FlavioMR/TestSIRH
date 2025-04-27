@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Emploi du Temps - SIRH</title>
+  <link rel="stylesheet" href="edt.css"> <!-- si tu veux aussi externaliser le style plus tard -->
+</head>
+<body>
+
+  <header>
+    <h1>SIRH</h1>
+    <nav>
+      <a href="accueil.html" class="active">Accueil</a>
+      <a href="gestionEmploye.html">Gestion employés</a>
+      <a href="gestionProjet.html">Gestion projets</a>
+      <a href="gestionCompetence.html">Gestion compétences</a>
+      <a href="edt.html"> Emploi du Temps</a>
+    </nav>
+  </header>
+
+<h1>Emploi du Temps - SIRH</h1>
+
+<button id="toggleViewBtn">Passer en vue Mois</button>
+
+<table id="schedule">
+  <thead>
+    <tr id="tableHead">
+      <th>Heure</th>
+      <!-- Les jours seront ajoutés dynamiquement ici -->
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Le JS remplira ici -->
+  </tbody>
+</table>
+
+<script src="edt.js"></script>
+
+</body>
+</html>

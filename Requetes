@@ -1,0 +1,214 @@
+/* Afficher les employés occupant un poste de Chef de Projet */
+SELECT NOM, Prenom
+FROM EMPLOYE E, Poste P
+WHERE Libelle_Poste = "Chef de Projet"
+AND E.Id_poste = P.Id_poste;
+
+/*Afficher le salaire brut de Édith Colin*/
+SELECT Id_emp, Nom, Prenom, Salaire_brut
+FROM Employe
+Where Prenom = "Édith"
+AND Nom = "Colin";
+
+/*Afficher les compétences de Édith Colin*/
+SELECT c.Libelle_comp, c.Description
+FROM Posseder p
+JOIN Competence c ON p.Id_comp = c.Id_comp
+JOIN Employe e ON e.Id_emp = p.Id_emp
+WHERE e.Nom = 'Colin' AND e.Prenom = 'Édith';
+
+/*afficher les compétences requises pour son poste*/
+SELECT c.Libelle_comp, c.Description
+FROM Avoir_Besoin ab
+JOIN Competence c ON ab.Id_comp = c.Id_comp
+JOIN Employe e ON e.Id_poste = ab.Id_poste
+WHERE e.Nom = 'Colin' AND e.Prenom = 'Édith';
+
+
+
+SELECT * 
+FROM Entretien
+ORDER BY Id_emp ASC;
+
+/*Afficher l'entretien de l'employé d'id 185 */
+SELECT *
+FROM Entretien
+WHERE Id_emp = 185;
+
+/*Afficher les détails de l'évaluation de l'employé d'id 185 lors de son entretien*/
+SELECT c.Libelle_comp, ev.Note, e.Id_entretien, e.Date_entretien
+FROM Evaluer ev
+JOIN Competence c ON ev.Id_comp = c.Id_comp
+JOIN Entretien e ON ev.Id_entretien = e.Id_entretien
+WHERE e.Id_emp = 185;
+
+
+
+/* Calculer la moyenne de salaire des employés du département de production */
+SELECT 
+    d.Nom AS Departement,
+    ROUND(AVG(e.Salaire_brut), 2) AS Salaire_Moyen
+FROM 
+    Employe e
+JOIN 
+    Departement d ON e.Id_dep = d.Id_dep
+WHERE 
+    d.Nom = 'Production'
+GROUP BY 
+    d.Nom;
+
+/* Calculer les 2 départements ayant la moyenne de salaires la plus élevée */
+SELECT 
+    p.Libelle_poste,
+    ROUND(AVG(e.Salaire_brut), 2) AS Salaire_Moyen
+FROM 
+    Employe e
+JOIN 
+    Poste p ON e.Id_poste = p.Id_poste
+GROUP BY
+    p.Libelle_poste
+ORDER BY
+    Salaire_Moyen DESC
+LIMIT 2;
+
+
+/* Calculer le salaire moyen et le nombre d'employés par site */
+SELECT 
+    s.Nom_site,
+    ROUND(AVG(e.Salaire_brut), 2) AS Salaire_Moyen,
+    COUNT(e.Id_emp) AS Nb_Employes
+FROM 
+    Employe e
+JOIN 
+    Site s ON e.Id_site = s.Id_site
+GROUP BY 
+    s.Id_site
+ORDER BY 
+    Salaire_Moyen DESC;
+
+/* Calculer le nombre d'employés par statut */
+SELECT 
+    Statut,
+    COUNT(*) AS Nb_Employes
+FROM 
+    Employe
+GROUP BY 
+    Statut
+ORDER BY 
+    Nb_Employes DESC;
+
+
+/*afficher le nombre d'employés par statut, par site et par département*/
+SELECT 
+    s.Nom_site AS Site,
+    d.Nom AS Departement,
+    e.Statut,
+    COUNT(e.Id_emp) AS Nb_Employes
+FROM 
+    Employe e
+JOIN 
+    Site s ON e.Id_site = s.Id_site
+JOIN 
+    Departement d ON e.Id_dep = d.Id_dep
+GROUP BY 
+    s.Nom_site, d.Nom, e.Statut
+ORDER BY 
+    s.Nom_site, d.Nom, e.Statut;
+
+
+/*afficher le site et le département qui comptent le plus grand nombre d'employés en alternance*/
+SELECT 
+    s.Nom_site AS Site,
+    d.Nom AS Departement,
+    COUNT(e.Id_emp) AS Nb_Alternants
+FROM 
+    Employe e
+JOIN 
+    Site s ON e.Id_site = s.Id_site
+JOIN 
+    Departement d ON e.Id_dep = d.Id_dep
+WHERE 
+    e.Statut = 'Alternance'
+GROUP BY 
+    s.Nom_site, d.Nom
+ORDER BY 
+    Nb_Alternants DESC
+LIMIT 1;
+
+
+
+/*afficher l’employé avec le salaire le plus élevé, ainsi que : Son salaire, Son site, Son département, Son poste*/
+SELECT 
+    e.Nom,
+    e.Prenom,
+    e.Salaire_brut,
+    s.Nom_site AS Site,
+    d.Nom AS Departement,
+    p.Libelle_poste AS Poste
+FROM 
+    Employe e
+JOIN 
+    Site s ON e.Id_site = s.Id_site
+JOIN 
+    Departement d ON e.Id_dep = d.Id_dep
+JOIN 
+    Poste p ON e.Id_poste = p.Id_poste
+ORDER BY 
+    e.Salaire_brut DESC
+LIMIT 1;
+
+
+
+/*afficher la moyenne de salaire par poste*/
+SELECT 
+    p.Libelle_poste AS Poste,
+    ROUND(AVG(e.Salaire_brut), 2) AS Salaire_Moyen
+FROM 
+    Employe e
+JOIN
+    Poste p ON e.Id_poste = p.Id_poste
+GROUP BY
+    p.Libelle_poste
+ORDER BY 
+    Salaire_Moyen DESC;
+
+/*afficher, pour chaque poste, le Salaire le plus élevé, Salaire le plus bas*/
+SELECT 
+    p.Libelle_poste AS Poste,
+    ROUND(MAX(e.Salaire_brut), 2) AS Salaire_Max,
+    ROUND(MIN(e.Salaire_brut), 2) AS Salaire_Min
+FROM 
+    Employe e
+JOIN 
+    Poste p ON e.Id_poste = p.Id_poste
+GROUP BY 
+    p.Libelle_poste
+ORDER BY 
+    p.Libelle_poste;
+
+/*afficher la moyenne de salaire par statut*/
+SELECT 
+    Statut,
+    ROUND(AVG(Salaire_brut), 2) AS Salaire_Moyen
+FROM 
+    Employe
+GROUP BY
+    Statut
+ORDER BY
+    Salaire_Moyen DESC;
+
+
+/*Voir le nombre de demandes par employé*/
+SELECT Id_emp, COUNT(*) AS nb_demandes
+FROM Demander
+GROUP BY Id_emp
+ORDER BY Id_emp;
+
+
+/*Afficher le nombre de demandes de congé par type de congé*/
+SELECT C.Type AS Type_de_congé, COUNT(*) AS Nombre_de_demandes
+FROM Demander D
+JOIN Conge C ON D.Id_cong = C.Id_cong
+GROUP BY C.Type
+ORDER BY Nombre_de_demandes DESC;
+
