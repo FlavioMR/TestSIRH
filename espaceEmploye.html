@@ -1,0 +1,319 @@
+<!-- Déclaration du type du document -->
+<!DOCTYPE html>
+
+<!-- Début du document HTML en français -->
+<html lang="fr">
+
+<!-- Début de l'en-tête du document -->
+<head>
+  <!-- Définition de l'encodage en UTF-8 -->
+  <meta charset="UTF-8">
+
+  <!-- Titre de la page -->
+  <title>Espace de Édith COLIN | Intranet RH</title>
+
+  <!-- Lien vers la feuille de style principale -->
+  <link href="sirh.css" rel="stylesheet">
+
+  <!-- Script pour vérifier l'authentification -->
+  <script>
+    if (localStorage.getItem("auth") !== "true") {
+      // Redirige vers login si l'utilisateur n'est pas authentifié
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+
+<!-- Début du corps du document -->
+<body>
+
+<!-- En-tête principal -->
+<header>
+  <h1>Espace de Édith COLIN</h1>
+  <nav>
+    <a href="#" onclick="logout()" class="logout-btn">Déconnexion</a>
+  </nav>
+</header>
+
+<!-- Contenu principal -->
+<main class="container">
+
+  <!-- Section des messages RH -->
+  <section class="card">
+    <h2>📬 Messages RH pour Édith COLIN</h2>
+    <button id="refreshBtn" class="btn actualiser">Actualiser les messages</button>
+    <div id="newMessageAlert" class="notification">🔔 Nouveau message reçu !</div>
+    <ul id="employeeMessages" class="message-list"></ul>
+  </section>
+
+  <!-- Section pour faire une nouvelle demande -->
+  <section class="card">
+    <h2>📝 Nouvelle demande de Édith COLIN</h2>
+    <form id="requestForm">
+      <select id="requestType" required>
+        <option value="">Type de demande</option>
+        <option value="Congé">Congé</option>
+        <option value="Formation">Formation</option>
+      </select>
+      <input type="date" id="requestDate">
+      <textarea id="requestComment" placeholder="Commentaire (facultatif)"></textarea>
+      <button type="submit" class="btn green">Envoyer la demande</button>
+    </form>
+  </section>
+
+  <!-- Section historique des demandes -->
+  <section class="card">
+    <h2>📂 Historique des demandes de Colin Édith</h2>
+    <ul id="myRequests" class="request-list"></ul>
+  </section>
+
+</main>
+
+<!-- Lien retour au profil -->
+<a href="employe.html" class="retour-btn">🔙 Retour Profil</a>
+
+<!-- Script principal pour la gestion des messages et demandes -->
+<script>
+  const employeNom = "Colin Édith"; // Nom de l'employé pour filtrer
+  let previousMessageCount = 0; // Compteur pour vérifier les nouveaux messages
+
+  function loadMessages() {
+    // Récupère tous les messages stockés
+    const allMessages = JSON.parse(localStorage.getItem("messagesRH") || "[]");
+    const userMessages = allMessages.filter(msg => msg.nom === employeNom);
+    const messageList = document.getElementById("employeeMessages");
+    messageList.innerHTML = ""; // Vide la liste avant de recharger
+
+    userMessages.forEach(msg => {
+      const li = document.createElement("li");
+      li.className = "message-item";
+      li.innerHTML = `
+        <strong>📌 ${msg.sujet}</strong> – <em>${msg.date}</em><br>
+        ${msg.contenu}
+      `;
+      messageList.appendChild(li);
+    });
+
+    if (userMessages.length > previousMessageCount) {
+      // Affiche une notification si de nouveaux messages arrivent
+      const notif = document.getElementById("newMessageAlert");
+      notif.style.display = "block";
+      setTimeout(() => notif.style.display = "none", 3000);
+    }
+
+    previousMessageCount = userMessages.length;
+  }
+
+  function loadRequests() {
+    // Récupère toutes les demandes stockées
+    const allRequests = JSON.parse(localStorage.getItem("demandesRH") || "[]");
+    const requestList = document.getElementById("myRequests");
+    requestList.innerHTML = ""; // Vide la liste avant de recharger
+
+    allRequests
+      .filter(req => req.nom === employeNom)
+      .forEach(req => {
+        const li = document.createElement("li");
+        li.className = "demande-item";
+        li.innerHTML = `
+          <strong>${req.type}</strong> demandé le ${req.date}<br>
+          <em>${req.commentaire}</em><br>
+          <strong>Statut :</strong> ${req.statut}
+        `;
+        requestList.appendChild(li);
+      });
+  }
+
+  // Rafraîchir les messages quand on clique sur le bouton
+  document.getElementById("refreshBtn").addEventListener("click", loadMessages);
+
+  // Gestion de l'envoi d'une nouvelle demande
+  document.getElementById("requestForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Empêche l'envoi classique du formulaire
+
+    const newRequest = {
+      nom: employeNom,
+      type: document.getElementById("requestType").value,
+      date: document.getElementById("requestDate").value || "-",
+      commentaire: document.getElementById("requestComment").value.trim(),
+      statut: "En attente",
+      id: Date.now() // Génère un ID unique basé sur l'heure actuelle
+    };
+
+    const requests = JSON.parse(localStorage.getItem("demandesRH") || "[]");
+    requests.push(newRequest);
+    localStorage.setItem("demandesRH", JSON.stringify(requests));
+
+    alert("Votre demande a bien été envoyée.");
+    this.reset(); // Réinitialise le formulaire
+    loadRequests(); // Recharge les demandes
+  });
+
+  // Chargement initial des messages et demandes
+  loadMessages();
+  loadRequests();
+</script>
+
+<!-- Script pour la déconnexion -->
+<script>
+  function logout() {
+    localStorage.removeItem("auth"); // Supprime l'authentification
+    window.location.href = "login.html"; // Redirige vers la page de connexion
+  }
+</script>
+
+</body>
+
+<!-- Fin du document HTML -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Espace de Édith COLIN | Intranet RH</title>
+  <link href="sirh.css" rel="stylesheet">
+  <script>
+    if (localStorage.getItem("auth") !== "true") {
+      // Si pas authentifié, retour au login
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Espace de Édith COLIN</h1>
+    <nav>
+      <a href="#" onclick="logout()" class="logout-btn">Déconnexion</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="card">
+      <h2>📬 Messages RH pour Édith COLIN</h2>
+      <button id="refreshBtn" class="btn actualiser">Actualiser les messages</button>
+      <div id="newMessageAlert" class="notification">🔔 Nouveau message reçu !</div>
+      <ul id="employeeMessages" class="message-list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>📝 Nouvelle demande de Édith COLIN</h2>
+      <form id="requestForm">
+        <select id="requestType" required>
+          <option value="">Type de demande</option>
+          <option value="Congé">Congé</option>
+          <option value="Formation">Formation</option>
+        </select>
+        <input type="date" id="requestDate">
+        <textarea id="requestComment" placeholder="Commentaire (facultatif)"></textarea>
+        <button type="submit" class="btn green">Envoyer la demande</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>📂 Historique des demandes de Colin Édith</h2>
+      <ul id="myRequests" class="request-list"></ul>
+    </section>
+  </main>
+  <a href="employe.html" class="retour-btn">🔙 Retour Profil</a>
+</body>
+<script>
+  const employeNom = "Colin Édith";
+  let previousMessageCount = 0;
+
+  function loadMessages() {
+    const allMessages = JSON.parse(localStorage.getItem("messagesRH") || "[]");
+    const userMessages = allMessages.filter(msg => msg.nom === employeNom);
+    const messageList = document.getElementById("employeeMessages");
+    messageList.innerHTML = "";
+
+    userMessages.forEach(msg => {
+      const li = document.createElement("li");
+      li.className = "message-item";
+      li.innerHTML = `
+        <strong>📌 ${msg.sujet}</strong> – <em>${msg.date}</em><br>
+        ${msg.contenu}
+      `;
+      messageList.appendChild(li);
+    });
+
+    if (userMessages.length > previousMessageCount) {
+      const notif = document.getElementById("newMessageAlert");
+      notif.style.display = "block";
+      setTimeout(() => notif.style.display = "none", 3000);
+    }
+
+    previousMessageCount = userMessages.length;
+  }
+
+  function loadRequests() {
+    const allRequests = JSON.parse(localStorage.getItem("demandesRH") || "[]");
+    const requestList = document.getElementById("myRequests");
+    requestList.innerHTML = "";
+
+    allRequests
+      .filter(req => req.nom === employeNom)
+      .forEach(req => {
+        const li = document.createElement("li");
+        li.className = "demande-item";
+        li.innerHTML = `
+          <strong>${req.type}</strong> demandé le ${req.date}<br>
+          <em>${req.commentaire}</em><br>
+          <strong>Statut :</strong> ${req.statut}
+        `;
+        requestList.appendChild(li);
+      });
+  }
+
+  document.getElementById("refreshBtn").addEventListener("click", loadMessages);
+
+  document.getElementById("requestForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const newRequest = {
+      nom: employeNom,
+      type: document.getElementById("requestType").value,
+      date: document.getElementById("requestDate").value || "-",
+      commentaire: document.getElementById("requestComment").value.trim(),
+      statut: "En attente",
+      id: Date.now()
+    };
+
+    const requests = JSON.parse(localStorage.getItem("demandesRH") || "[]");
+    requests.push(newRequest);
+    localStorage.setItem("demandesRH", JSON.stringify(requests));
+
+    alert("Votre demande a bien été envoyée.");
+    this.reset();
+    loadRequests();
+  });
+
+  // Chargement automatique au démarrage
+  loadMessages();
+  loadRequests();
+</script>
+<script>
+  function logout() {
+    localStorage.removeItem("auth");
+    window.location.href = "login.html";
+  }
+</script>
+</body>
+</html> -->

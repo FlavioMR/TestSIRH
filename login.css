@@ -1,0 +1,395 @@
+/* Applique box-sizing: border-box à tous les éléments */
+* {
+  box-sizing: border-box;
+}
+
+/* Définition d'une animation de fond pour faire tourner l'image */
+@keyframes rotate {
+  100% {
+    background-position: 25% 50%; /* À 100% de l'animation, décale légèrement l'arrière-plan */
+  }
+}
+
+/* Déclaration d'une variable CSS principale */
+:root {
+  --color-primary: #3192e5; /* Couleur principale bleue */
+}
+
+/* Style général du body */
+body {
+  display: grid; /* Utilisation de Grid pour centrer le contenu */
+  place-items: center; /* Centre horizontalement et verticalement */
+  margin: 0; /* Supprime les marges par défaut */
+  height: 100vh; /* Hauteur 100% de la fenêtre */
+  padding: 0 24px; /* Marge intérieure horizontale */
+  background-color: var(--color-primary); /* Fond de couleur principale */
+  background-image: url("bg.svg"); /* Image de fond */
+  background-repeat: no-repeat; /* Pas de répétition de l'image */
+  background-size: cover; /* Couvre toute la surface */
+  font-family: "Euclid Circular A"; /* Police personnalisée */
+  color: #f9f9f9; /* Texte très clair */
+  animation: rotate 6s infinite alternate linear; /* Animation de fond en boucle */
+}
+
+/* Style de la carte contenant le formulaire */
+.card {
+  position: relative; /* Positionnement relatif */
+  z-index: 3; /* Priorité d'affichage supérieure */
+  width: 100%;
+  margin: 0 20px; /* Marge horizontale */
+  padding: 70px 30px 44px; /* Espacement interne (haut, côtés, bas) */
+  border-radius: 20px; /* Coins arrondis */
+  background: rgba(0 0 0 / 17%); /* Fond semi-transparent noir */
+  backdrop-filter: blur(10px); /* Flou de l'arrière-plan */
+  text-align: center; /* Texte centré */
+}
+
+/* Media query pour écrans plus larges que 448px */
+@media (width >= 448px) {
+  .card {
+    margin: 0; /* Retire la marge sur petits écrans */
+    width: 70%; /* Largeur fixée à 70% */
+    min-width: 400px; /* Largeur minimale 400px */
+  }
+}
+
+/* Media query pour écrans plus larges que 500px */
+@media (width >= 500px) {
+  body {
+    padding: 0; /* Supprime les paddings horizontaux */
+  }
+}
+
+/* Media query pour écrans plus larges que 628px */
+@media (width >= 628px) {
+  .card {
+    position: fixed; /* Fixe la carte dans la fenêtre */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 44px; /* Ajuste le padding horizontal */
+    width: 50%; /* Réduit la largeur */
+    max-width: 500px; /* Limite la largeur maximale */
+    min-width: auto; /* Désactive min-width précédente */
+    display: flex; /* Flexbox pour aligner verticalement */
+    border-radius: 0; /* Supprime les coins arrondis */
+    flex-direction: column; /* Alignement en colonne */
+    justify-content: center; /* Centre verticalement */
+  }
+}
+
+/* Style du titre h2 dans la carte */
+.card > h2 {
+  font-size: 36px; /* Taille du texte */
+  font-weight: 400; /* Poids normal */
+  margin: 0 0 12px; /* Marge inférieure uniquement */
+}
+
+/* Style du sous-titre h3 dans la carte */
+.card > h3 {
+  color: rgb(255 255 255 / 38%); /* Texte en blanc semi-transparent */
+  margin: 0 0 48px; /* Plus grande marge inférieure */
+  font-weight: 400; /* Poids normal */
+  font-size: 16px; /* Taille réduite */
+}
+
+/* Style du formulaire principal */
+.form {
+  width: 100%;
+  margin: 0;
+  display: grid; /* Mise en page en grille */
+  gap: 16px; /* Espacement entre les éléments */
+}
+
+/* Style commun pour les inputs et boutons dans le formulaire */
+.form > :is(input, button) {
+  width: 100%;
+  height: 56px; /* Hauteur uniforme */
+  border-radius: 6px;
+  border: 0;
+}
+
+/* Style spécifique des champs input */
+.form > input {
+  color: rgb(255 255 255 / 96%); /* Texte presque blanc */
+  background: rgb(255 255 255 / 8%); /* Fond semi-transparent */
+  font-family: inherit; /* Hérite la police */
+  font-size: 16px;
+  padding: 0 16px; /* Espacement intérieur horizontal */
+}
+
+/* Style pour input actif (focus) */
+.form > input:focus {
+  outline: var(--color-primary); /* Bordure colorée */
+}
+
+/* Style du placeholder dans les inputs */
+.form > input::placeholder {
+  color: rgb(255 255 255 / 38%); /* Placeholder semi-transparent */
+}
+
+/* Style des boutons du formulaire */
+.form > button {
+  cursor: pointer; /* Curseur main au survol */
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  background: var(--color-primary); /* Fond bleu principal */
+  color: #f9f9f9; /* Texte blanc */
+  border: 0;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  transition: all 0.375s; /* Transition douce */
+}
+
+/* Style pour les liens dans le formulaire */
+.form > a {
+  color: var(--color-primary); /* Couleur bleue */
+  font-size: 16px;
+  text-align: left;
+  text-decoration: none; /* Pas de soulignement */
+  margin-bottom: 30px; /* Espace sous le lien */
+}
+
+/* Style général des labels */
+.form label {
+  display: block;
+  cursor: pointer;
+  display: flex; /* Affichage flex */
+  align-items: center; /* Alignement vertical des enfants */
+  gap: 12px; /* Espace entre texte et case */
+  margin: 6px 0 8px; /* Marges extérieures */
+  color: rgb(255 255 255 / 50%); /* Couleur semi-transparente */
+}
+
+/* Style spécifique pour input dans label (caché) */
+.form label input {
+  visibility: hidden;
+  display: none;
+}
+
+/* Style de la case à cocher une fois cochée */
+.form input:checked ~ .checkbox-wrapper .checkbox {
+  transform: rotate(45deg); /* Rotation pour coche visuelle */
+  width: 14px;
+  margin-left: 12px;
+  margin-top: -2px;
+  border-color: var(--color-primary); /* Couleur bleue */
+  border-top-color: transparent; /* Efface bord haut */
+  border-left-color: transparent; /* Efface bord gauche */
+  border-radius: 0; /* Coins carrés */
+}
+
+/* Conteneur de la case à cocher */
+.checkbox-wrapper {
+  width: 32px;
+  height: 32px;
+}
+
+/* Style de la boîte de la case à cocher */
+.checkbox {
+  display: block;
+  width: inherit;
+  height: inherit;
+  border: 3px solid rgb(255 255 255 / 18%); /* Bordure blanche semi-transparente */
+  border-radius: 6px; /* Coins arrondis */
+  transition: all 0.375s; /* Transition douce */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* * {
+    box-sizing: border-box;
+  }
+  
+  @keyframes rotate {
+    100% {
+      background-position: 25% 50%;
+    }
+  }
+  
+  :root {
+    --color-primary: #3192e5;
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    height: 100vh;
+    padding: 0 24px;
+    background-color: var(--color-primary);
+    background-image: url("bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Euclid Circular A";
+    color: #f9f9f9;
+    animation: rotate 6s infinite alternate linear;
+  }
+  
+  .card {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    margin: 0 20px;
+    padding: 70px 30px 44px;
+    border-radius: 20px;
+    background: rgba(0 0 0 / 17%);
+    backdrop-filter: blur(10px);
+    text-align: center;
+  }
+  
+  @media (width >= 448px) {
+    .card {
+      margin: 0;
+      width: 70%;
+      min-width: 400px;
+    }
+  }
+  
+  @media (width >= 500px) {
+    body {
+      padding: 0;
+    }
+  }
+  
+  @media (width >= 628px) {
+    .card {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0 44px;
+      width: 50%;
+      max-width: 500px;
+      min-width: auto;
+      display: flex;
+      border-radius: 0;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+  
+  .card > h2 {
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0 0 12px;
+  }
+  
+  .card > h3 {
+    color: rgb(255 255 255 / 38%);
+    margin: 0 0 48px;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  
+  .form {
+    width: 100%;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+  }
+  
+  .form > :is(input, button) {
+    width: 100%;
+    height: 56px;
+    border-radius: 6px;
+    border: 0;
+  }
+  
+  .form > input {
+    color: rgb(255 255 255 / 96%);
+    background: rgb(255 255 255 / 8%);
+    font-family: inherit;
+    font-size: 16px;
+    padding: 0 16px;
+  }
+  
+  .form > input:focus {
+    outline: var(--color-primary);
+  }
+  
+  .form > input::placeholder {
+    color: rgb(255 255 255 / 38%);
+  }
+  
+  .form > button {
+    cursor: pointer;
+    width: 100%;
+    height: 56px;
+    padding: 0 16px;
+    background: var(--color-primary);
+    color: #f9f9f9;
+    border: 0;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    transition: all 0.375s;
+  }
+  
+  .form > a {
+    color: var(--color-primary);
+    font-size: 16px;
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: 30px;
+  }
+  
+  .form label {
+    display: block;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 6px 0 8px;
+    color: rgb(255 255 255 / 50%);
+  }
+  
+  .form label input {
+    visibility: hidden;
+    display: none;
+  }
+  
+  .form input:checked ~ .checkbox-wrapper .checkbox {
+    transform: rotate(45deg);
+    width: 14px;
+    margin-left: 12px;
+    margin-top: -2px;
+    border-color: var(--color-primary);
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+  }
+  
+  .checkbox-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .checkbox {
+    display: block;
+    width: inherit;
+    height: inherit;
+    border: 3px solid rgb(255 255 255 / 18%);
+    border-radius: 6px;
+    transition: all 0.375s;
+  } */

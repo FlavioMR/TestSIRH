@@ -1,0 +1,171 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f2f2f2;
+}
+
+header {
+  background-color: #036;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: white;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Zone principale de la page */
+main {
+  padding: 2rem; /* Espacement intérieur autour du contenu */
+}
+
+/* Carte d’information ou de contenu */
+.card {
+  background: #fff; 
+  padding: 2rem; /* Espacement intérieur */
+  border-radius: 12px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Ombre douce */
+  position: relative; /* Nécessaire pour positionner les éléments enfants */
+  padding-top: 60px; /* Espace en haut, probablement pour un badge ou un bouton */
+}
+
+/* Bouton de base */
+.btn {
+  display: inline-block; /* S’aligne comme du texte, mais avec des dimensions */
+  margin: 10px 5px 20px 0; /* Marge autour du bouton */
+  padding: 10px 16px; /* Espacement intérieur */
+  border: none; 
+  border-radius: 6px; 
+  color: #fff; 
+  font-weight: bold;
+  cursor: pointer; 
+}
+
+/* Couleurs spécifiques des boutons */
+.blue {
+  background: #007bff; /* Bleu vif */
+}
+.green {
+  background: #28a745; /* Vert */
+}
+.red {
+  background: #dc3545; /* Rouge */
+}
+
+/* Bouton orange positionné en haut à droite d’une carte */
+.orange {
+  background: orange;
+  position: absolute; /* Position absolue par rapport au parent (la carte) */
+  top: 20px;
+  right: 20px;
+  z-index: 1; /* S’assure qu’il passe au-dessus des autres éléments */
+}
+
+/* Effet au survol de tous les boutons */
+.btn:hover {
+  opacity: 0.9; /* Léger effet d’assombrissement */
+}
+
+
+.logout-btn {
+  background-color: #e74c3c; /* rouge vif */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 1rem;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b; /* rouge plus foncé au survol */
+}
+
+/* Supprime le soulignement sur tous les liens */
+a {
+  text-decoration: none;
+}
+
+/* Bloc d’informations pour un employé */
+#employe {
+  display: flex; /* Disposition en ligne */
+  align-items: center; /* Alignement vertical */
+  gap: 15px; /* Espace entre les éléments (photo, nom, etc.) */
+  margin-bottom: 20px; /* Espacement en bas */
+}
+
+/* Photo de profil circulaire */
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  object-fit: cover; /* Remplissage de l’image sans déformation */
+  border-radius: 50%; /* Cercle parfait */
+  background-color: #ccc; /* Gris clair si pas d’image */
+}
+
+/* Champs de formulaire : select et input */
+select, input {
+  width: 100%; /* Prend toute la largeur disponible */
+  padding: 10px; /* Espacement intérieur */
+  margin: 8px 0; /* Espacement vertical entre les champs */
+  border-radius: 6px; 
+  border: 1px solid #ccc; 
+}
+
+/* Listes (ul) */
+ul {
+  padding-left: 20px; /* Décalage à gauche des puces */
+}
+
+/* Fenêtre modale (popup) */
+.modal {
+  display: none; /* Cachée par défaut */
+  position: fixed; /* Position fixe par rapport à la fenêtre */
+  z-index: 1000; /* Très au-dessus des autres éléments */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Fond noir semi-transparent */
+}
+
+/* Contenu de la modale */
+.modal-content {
+  background-color: #fff; 
+  margin: 10% auto; /* Centré verticalement à 10%, horizontalement automatique */
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px; /* Largeur fixe */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Ombre marquée */
+}
+
+/* Bouton de fermeture de la modale (le X) */
+.close {
+  color: #aaa; 
+  float: right; /* Aligné à droite */
+  font-size: 24px;
+  cursor: pointer; 
+}
+
+/* Effet au survol de la croix */
+.close:hover {
+  color: #000; 
+}

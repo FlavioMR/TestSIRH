@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil - SIRH</title>
+  <!-- Lien vers la feuille de style unique -->
+  <link href="sirh.css" rel="stylesheet">
+  <!-- Styles specifiques pour l'accueil direct dans le fichier HTML -->
+  <style>
+    .main-background {
+      background: url('pneu.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+    .main-background .card, .main-background .chart-container {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 8px;
+    }
+  </style>
+   <!-- Script de securite : si pas connecte, redirige vers la page login -->
+  <script>
+    if (localStorage.getItem("auth") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>SIRH</h1>
+    <nav>
+      <a href="accueil.html" class="active">Accueil</a> <!-- Lien actif pour Accueil -->
+      <a href="gestionEmploye.html">Gestion employés</a> <!-- Lien vers gestion employes -->
+      <a href="gestionProjet.html">Gestion projets</a> <!-- Lien vers gestion projets -->
+      <a href="edt.html">Emploi du Temps</a> <!-- Lien vers emploi du temps -->
+      <a href="#" onclick="logout()" class="logout-btn">Déconnexion</a> <!-- Bouton de deconnexion -->
+    </nav>
+  </header>
+
+  <main class="container main-background">
+    <section class="card">
+      <h2>Bienvenue dans le Système d'Information RH</h2>
+      <p>Choisissez une section via la barre de navigation ci-dessus pour commencer à gérer vos données RH.</p>
+    </section>
+  
+    <section class="dashboard">
+      <div class="kpi-container">
+        <div class="kpi-card" id="total-employes"></div> <!-- KPI : Total employes -->
+        <div class="kpi-card" id="repartition-statut"></div> <!-- KPI : Repartition CDI/CDD -->
+        <div class="kpi-card" id="salaire-moyen"></div> <!-- KPI : Salaire moyen -->
+        <div class="kpi-card" id="anciennete-moyenne"></div> <!-- KPI : Anciennete moyenne -->
+      </div>
+      <!-- Graphique des employés par département -->
+      <div class="chart-container">
+        <div id="chart-departements"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+// Script de déconnexion : supprime l'authentification locale
+    function logout() {
+      localStorage.removeItem("auth");
+      window.location.href = "login.html";
+    }
+  </script>
+  <!-- Librairie pour créer des graphiques (ApexCharts) -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="employes_data.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

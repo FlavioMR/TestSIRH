@@ -1,0 +1,143 @@
+<!-- Déclaration du type du document -->
+<!DOCTYPE html>
+
+<!-- Début du document HTML en anglais -->
+<html lang="en">
+
+<!-- Début de l'en-tête du document -->
+<head>
+  <!-- Titre de l'onglet -->
+  <title>Login</title>
+
+  <!-- Lien vers la feuille de style externe login.css -->
+  <link href="login.css" rel="stylesheet">    
+</head>
+
+<!-- Début du corps du document -->
+<body>
+
+  <!-- Conteneur principal avec style de carte -->
+  <div class="card">
+
+    <!-- Titre principal de la carte -->
+    <h2>Login</h2>
+
+    <!-- Sous-titre avec consignes -->
+    <h3>Entrer vos informations de connexion</h3>
+
+    <!-- Formulaire de connexion -->
+    <form class="form">
+
+      <!-- Champ pour le nom d'utilisateur -->
+      <input type="text" placeholder="Nom d'utilisateur" />
+
+      <!-- Champ pour le mot de passe -->
+      <input type="password" placeholder="Mot de passe" />
+
+      <!-- Option pour rester connecté -->
+      <label>
+        <input type="checkbox" />
+        <span class="checkbox-wrapper">
+          <span class="checkbox"></span>
+        </span>
+        <span class="checkbox-text"> Rester connecté </span>
+      </label>
+
+      <!-- Bouton de validation du formulaire -->
+      <button type="submit">Login</button>
+
+    </form>
+
+  </div>
+
+  <!-- Script pour la gestion de la connexion -->
+  <script>
+    // Ajoute un écouteur sur la soumission du formulaire
+    document.querySelector(".form").addEventListener("submit", function(event) {
+      event.preventDefault(); // Empêche l'envoi classique du formulaire
+  
+      // Récupère les valeurs des champs username et password
+      const username = document.querySelector('input[type="text"]').value;
+      const password = document.querySelector('input[type="password"]').value;
+
+      // Vérifie les identifiants : "admin" / "1234" ou "employe" / "2345"
+      if (username === "admin" && password === "1234") {
+        localStorage.setItem("auth", "true"); // Stocke l'authentification dans le localStorage
+        window.location.href = "accueil.html"; // Redirige vers l'accueil
+      } else if (username === "employe" && password === "2345") {
+        localStorage.setItem("auth", "true"); // Stocke aussi l'authentification pour employe
+        window.location.href = "employe.html"; // Redirige vers la page employé
+      } else {
+        alert("Identifiants incorrects !"); // Message d'erreur si mauvais identifiants
+      }
+    });
+  </script> 
+
+</body>
+
+<!-- Fin du document HTML -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <link href="login.css" rel="stylesheet">    
+  </head>
+  <body>
+    <div class="card">
+      <h2>Login</h2>
+      <h3>Entrer vos informations de connexion</h3>
+      <form class="form">
+        <input type="text" placeholder="Nom d'utilisateur" />
+        <input type="password" placeholder="Mot de passe" />
+        <label>
+          <input type="checkbox" />
+          <span class="checkbox-wrapper">
+            <span class="checkbox"></span>
+          </span>
+          <span class="checkbox-text"> Rester connecté </span>
+        </label>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+    <script>
+      document.querySelector(".form").addEventListener("submit", function(event) {
+        event.preventDefault();
+    
+        // Récupérer les valeurs des inputs
+        const username = document.querySelector('input[type="text"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+    
+        // Vérification des identifiants
+        if (username === "admin" && password === "1234") {
+          localStorage.setItem("auth", "true");
+          window.location.href = "accueil.html";
+        } else if (username === "employe" && password === "2345") {
+          localStorage.setItem("auth", "true");
+          window.location.href = "employe.html";
+        } else {
+          alert("Identifiants incorrects !");
+        }
+      });
+    </script>        
+  </body>
+</html> -->

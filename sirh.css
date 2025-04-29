@@ -1,0 +1,559 @@
+/* ---- Global ---- */
+
+/* Sélecteur du body */
+body { /* Début du bloc body */
+  font-family: Arial, sans-serif; /* Police utilisée pour tout le site */
+  margin: 0; /* Supprime les marges par défaut */
+  background: #f2f2f2; /* Couleur de fond gris clair */
+} /* Fin du bloc body */
+
+/* Sélecteur du header */
+header { /* Début du bloc header */
+  background-color: #003366; /* Couleur de fond bleu foncé pour l'en-tête */
+  color: white; /* Texte en blanc */
+  padding: 1rem; /* Padding interne de 1 unité de mesure */
+  display: flex; /* Utilise Flexbox pour aligner le contenu */
+  justify-content: space-between; /* Espace entre les éléments */
+  align-items: center; /* Centre les éléments verticalement */
+} /* Fin du bloc header */
+
+/* Sélecteur des liens dans la navigation */
+nav a { /* Début du bloc nav a */
+  color: white; /* Couleur du texte en blanc */
+  margin: 0 1rem; /* Marge horizontale entre les liens */
+  text-decoration: none; /* Pas de soulignement */
+} /* Fin du bloc nav a */
+
+/* Sélecteur pour survol des liens */
+nav a:hover { /* Début du bloc nav a:hover */
+  background-color: white; /* Fond blanc au survol */
+  color: black; /* Texte noir au survol */
+  padding: 4px 8px; /* Ajoute un peu d'espace intérieur */
+  border-radius: 4px; /* Bords arrondis */
+} /* Fin du bloc nav a:hover */
+
+/* Sélecteur pour le lien actif */
+nav a.active { /* Début du bloc nav a.active */
+  font-weight: bold; /* Texte en gras */
+  text-decoration: underline; /* Soulignement du lien actif */
+} /* Fin du bloc nav a.active */
+
+/* ---- Layouts ---- */
+
+/* Sélecteur pour le conteneur principal */
+main.container,
+.container { /* Début du bloc main.container, .container */
+  padding: 2rem; /* Padding interne */
+  display: flex; /* Flexbox pour alignement horizontal */
+  gap: 20px; /* Espacement entre les éléments */
+  flex-wrap: wrap; /* Permet le retour à la ligne */
+} /* Fin du bloc main.container, .container */
+
+/* Sélecteur pour les cartes */
+.card { /* Début du bloc .card */
+  background: #fff; /* Fond blanc */
+  padding: 1.5rem; /* Espace intérieur */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 0 8px rgba(0,0,0,0.05); /* Ombre légère */
+  margin-bottom: 1.5rem; /* Marge en bas */
+  flex: 1; /* Flexibilité pour occuper l'espace */
+  min-width: 300px; /* Largeur minimale de la carte */
+} /* Fin du bloc .card */
+
+/* ---- Espace Employé spécifique ---- */
+
+/* Notification de nouveau message */
+.notification { /* Début du bloc .notification */
+  color: #27ae60; /* Couleur verte */
+  font-weight: bold; /* Texte en gras */
+  display: none; /* Caché par défaut */
+  margin-top: 10px; /* Marge supérieure */
+} /* Fin du bloc .notification */
+
+/* Message et demande */
+.message-item, .demande-item { /* Début du bloc .message-item, .demande-item */
+  background-color: #ecf0f1; /* Fond gris clair */
+  padding: 12px; /* Padding interne */
+  margin-bottom: 10px; /* Marge en bas */
+  border-radius: 6px; /* Coins arrondis */
+} /* Fin du bloc .message-item, .demande-item */
+
+/* Style du sujet d'un message */
+.message-item strong { /* Début du bloc .message-item strong */
+  color: #2980b9; /* Texte bleu */
+} /* Fin du bloc .message-item strong */
+
+/* Style du commentaire d'une demande */
+.demande-item em { /* Début du bloc .demande-item em */
+  color: #7f8c8d; /* Texte gris foncé */
+} /* Fin du bloc .demande-item em */
+
+/* ---- Boutons ---- */
+
+/* Style général pour tous les boutons */
+.btn { /* Début du bloc .btn */
+  margin: 10px 5px 20px 0; /* Marges autour du bouton */
+  padding: 8px 14px; /* Espacement intérieur */
+  border: none; /* Pas de bordure */
+  border-radius: 4px; /* Coins arrondis */
+  color: #fff; /* Texte blanc */
+  cursor: pointer; /* Curseur pointeur */
+  font-size: 14px; /* Taille du texte */
+} /* Fin du bloc .btn */
+
+/* Bouton bleu */
+.btn.blue { /* Début du bloc .btn.blue */
+  background: #007bff; /* Fond bleu */
+  position: absolute; /* Position absolue */
+  right: 20px; /* Alignement à droite */
+} /* Fin du bloc .btn.blue */
+
+/* Bouton vert */
+.btn.green { /* Début du bloc .btn.green */
+  background: #28a745; /* Fond vert */
+} /* Fin du bloc .btn.green */
+
+/* Survol des boutons */
+.btn:hover { /* Début du bloc .btn:hover */
+  opacity: 0.9; /* Légère transparence */
+} /* Fin du bloc .btn:hover */
+
+/* Bouton de retour */
+.retour-btn { /* Début du bloc .retour-btn */
+  background-color: #007bff; /* Fond bleu */
+  color: white; /* Texte blanc */
+  padding: 10px 20px; /* Espacement interne */
+  display: table; /* Centrage automatique */
+  margin: 20px auto; /* Marge verticale */
+  border-radius: 5px; /* Coins arrondis */
+  font-weight: 600; /* Texte plus gras */
+  text-decoration: none; /* Pas de soulignement */
+  cursor: pointer; /* Curseur main */
+} /* Fin du bloc .retour-btn */
+
+/* Survol du bouton retour */
+.retour-btn:hover { /* Début du bloc .retour-btn:hover */
+  background-color: #0056b3; /* Bleu plus foncé au survol */
+} /* Fin du bloc .retour-btn:hover */
+
+/* Bouton de déconnexion */
+.logout-btn { /* Début du bloc .logout-btn */
+  background-color: #e74c3c; /* Fond rouge vif */
+  color: white; /* Texte blanc */
+  padding: 8px 16px; /* Padding interne */
+  border-radius: 5px; /* Coins arrondis */
+  font-weight: bold; /* Texte en gras */
+  text-decoration: none; /* Pas de soulignement */
+  margin-left: 1rem; /* Marge à gauche */
+  transition: background-color 0.3s; /* Transition douce */
+} /* Fin du bloc .logout-btn */
+
+/* Survol du bouton de déconnexion */
+.logout-btn:hover { /* Début du bloc .logout-btn:hover */
+  background-color: #c0392b; /* Fond rouge plus foncé au survol */
+} /* Fin du bloc .logout-btn:hover */
+
+/* Bouton d'actualisation */
+.btn.actualiser { /* Début du bloc .btn.actualiser */
+  background: #007bff; /* Fond bleu */
+} /* Fin du bloc .btn.actualiser */
+
+/* Carte alignée à gauche */
+.card.left { /* Début du bloc .card.left */
+  position: relative; /* Position relative pour positionner les boutons */
+} /* Fin du bloc .card.left */
+
+/* ---- Gestion Employés & Compétences ---- */
+
+/* Section de gauche */
+.left { /* Début du bloc .left */
+  flex: 2; /* Plus grande largeur */
+} /* Fin du bloc .left */
+
+/* Section de droite */
+.right { /* Début du bloc .right */
+  flex: 1; /* Plus petite largeur */
+} /* Fin du bloc .right */
+
+/* Conteneur de l'employé */
+#employe { /* Début du bloc #employe */
+  display: flex; /* Flexbox */
+  gap: 10px; /* Espacement interne */
+  align-items: center; /* Centre les éléments verticalement */
+  margin-bottom: 20px; /* Marge en bas */
+} /* Fin du bloc #employe */
+
+/* Photo de profil */
+.profile-pic { /* Début du bloc .profile-pic */
+  width: 50px; /* Largeur */
+  height: 50px; /* Hauteur */
+  background: #ccc; /* Fond gris clair */
+  border-radius: 50%; /* Cercle */
+} /* Fin du bloc .profile-pic */
+
+/* Informations de l'employé */
+#infos-employe p { /* Début du bloc #infos-employe p */
+  margin: 6px 0; /* Marges haut et bas */
+} /* Fin du bloc #infos-employe p */
+
+/* Champs de formulaire */
+select, input[type="date"], textarea { /* Début du bloc select, input[type="date"], textarea */
+  width: 100%; /* Largeur complète */
+  max-width: 400px; /* Largeur maximale */
+  padding: 8px; /* Padding interne */
+  margin-top: 10px; /* Marge au-dessus */
+  margin-bottom: 15px; /* Marge en dessous */
+  border: 1px solid #ccc; /* Bordure grise */
+  border-radius: 6px; /* Coins arrondis */
+  font-size: 14px; /* Taille du texte */
+} /* Fin du bloc select, input[type="date"], textarea */
+
+/* Listes */
+ul { /* Début du bloc ul */
+  padding-left: 20px; /* Décalage à gauche */
+  list-style: none; /* Pas de puces */
+} /* Fin du bloc ul */
+
+/* ---- Gestion Projets ---- */
+
+/* En-tête de projet */
+.project-header { /* Début du bloc .project-header */
+  display: flex; /* Flexbox */
+  justify-content: space-between; /* Espace entre les éléments */
+  align-items: center; /* Alignement vertical centré */
+} /* Fin du bloc .project-header */
+
+/* Tâches */
+.task { /* Début du bloc .task */
+  margin-left: 1rem; /* Marge à gauche */
+  border-left: 3px solid #007bff; /* Bordure bleue verticale */
+  padding-left: 1rem; /* Padding intérieur gauche */
+  margin-bottom: 1rem; /* Marge en bas */
+} /* Fin du bloc .task */
+
+/* État des tâches */
+.status { /* Début du bloc .status */
+  padding: 0.2rem 0.6rem; /* Espacement interne */
+  border-radius: 5px; /* Coins arrondis */
+  font-size: 0.8rem; /* Petite taille */
+  color: white; /* Texte blanc */
+} /* Fin du bloc .status */
+
+/* Statut terminé */
+.status.terminee { /* Début du bloc .status.terminee */
+  background-color: green; /* Fond vert */
+} /* Fin du bloc .status.terminee */
+
+/* Statut en cours */
+.status.en-cours { /* Début du bloc .status.en-cours */
+  background-color: orange; /* Fond orange */
+} /* Fin du bloc .status.en-cours */
+
+/* Statut en attente */
+.status.en-attente { /* Début du bloc .status.en-attente */
+  background-color: gray; /* Fond gris */
+} /* Fin du bloc .status.en-attente */
+
+/* Flèche de bascule */
+.toggle-arrow { /* Début du bloc .toggle-arrow */
+  margin-right: 10px; /* Marge à droite */
+  transform: rotate(90deg); /* Rotation initiale */
+  transition: transform 0.3s ease; /* Transition douce */
+} /* Fin du bloc .toggle-arrow */
+
+/* Flèche repliée */
+.project-header.collapsed .toggle-arrow { /* Début du bloc .project-header.collapsed .toggle-arrow */
+  transform: rotate(-90deg); /* Rotation inversée */
+} /* Fin du bloc .project-header.collapsed .toggle-arrow */
+
+/* ---- Style pour tableau de bord ---- */
+
+/* Conteneur KPI */
+.kpi-container { /* Début du bloc .kpi-container */
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* Retour à la ligne automatique */
+  gap: 1rem; /* Espacement entre cartes */
+  margin: 1rem 0; /* Marges verticales */
+} /* Fin du bloc .kpi-container */
+
+/* Carte KPI */
+.kpi-card { /* Début du bloc .kpi-card */
+  flex: 1; /* Flexibilité */
+  min-width: 200px; /* Largeur minimale */
+  background: white; /* Fond blanc */
+  border: 1px solid #ccc; /* Bordure grise */
+  border-radius: 8px; /* Coins arrondis */
+  padding: 1rem; /* Padding interne */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombre légère */
+  text-align: center; /* Centre le texte */
+} /* Fin du bloc .kpi-card */
+
+/* Conteneur de graphique */
+.chart-container { /* Début du bloc .chart-container */
+  margin: 2rem 0; /* Marges verticales */
+} /* Fin du bloc .chart-container */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---- Global ---- */
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f2f2f2;
+}
+
+header {
+  background-color: #003366;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: white;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ---- Layouts ---- *
+main.container,
+.container {
+  padding: 2rem;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+  flex: 1;
+  min-width: 300px;
+}
+
+/* ---- Espace Employé spécifique ---- *
+.notification {
+  color: #27ae60;
+  font-weight: bold;
+  display: none;
+  margin-top: 10px;
+}
+
+.message-item, .demande-item {
+  background-color: #ecf0f1;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.message-item strong {
+  color: #2980b9;
+}
+
+.demande-item em {
+  color: #7f8c8d;
+}
+
+/* ---- Boutons ---- *
+.btn {
+  margin: 10px 5px 20px 0;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn.blue {
+  background: #007bff;
+  position: absolute;
+  right: 20px;
+}
+
+.btn.green {
+  background: #28a745;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.retour-btn {
+  background-color: #007bff; 
+  color: white; 
+  padding: 10px 20px; /* Espacement interne pour le bouton *
+  display: table; /* Affichage en tableau pour le centrage *
+  margin: 20px auto; /* Centrage avec un espacement autour *
+  border-radius: 5px; 
+  font-weight: 600; 
+  text-decoration: none; 
+  cursor: pointer; 
+}
+
+.retour-btn:hover {
+  background-color: #0056b3; 
+}
+
+.logout-btn {
+  background-color: #e74c3c; /* rouge vif *
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 1rem;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b; /* rouge plus foncé au survol *
+}
+
+.btn.actualiser {
+  background: #007bff;
+}
+
+.card.left {
+  position: relative;
+}
+
+/* ---- Gestion Employés & Compétences ---- *
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+}
+
+#employe {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  background: #ccc;
+  border-radius: 50%;
+}
+
+#infos-employe p {
+  margin: 6px 0;
+}
+
+select, input[type="date"], textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+ul {
+  padding-left: 20px;
+  list-style: none;
+}
+
+/* ---- Gestion Projets ---- *
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task {
+  margin-left: 1rem;
+  border-left: 3px solid #007bff;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.status {
+  padding: 0.2rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.status.terminee {
+  background-color: green;
+}
+
+.status.en-cours {
+  background-color: orange;
+}
+
+.status.en-attente {
+  background-color: gray;
+}
+
+.toggle-arrow {
+  margin-right: 10px;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.project-header.collapsed .toggle-arrow {
+  transform: rotate(-90deg);
+}
+
+/* ---- Style pour tableau de bord ---- *
+.kpi-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.kpi-card {
+  flex: 1;
+  min-width: 200px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.chart-container {
+  margin: 2rem 0;
+} */
